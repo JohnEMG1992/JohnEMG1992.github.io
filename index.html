@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J. Maldonado | Centro de Control & Gobernanza TI</title>
+    <!-- Google Fonts para máxima scannability ejecutiva -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,7 +18,8 @@
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(30, 41, 59, 0.8);
-            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%);
+            --card-gradient-left: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
+            --card-gradient-right: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -26,14 +28,14 @@
             background-color: var(--bg-dark); 
             color: var(--text-light); 
             line-height: 1.6; 
-            padding-bottom: 40px;
+            padding-bottom: 20px;
             background-image: 
-                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 10% 70%, rgba(30, 41, 59, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.15) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
-        /* Menú Perimetral con Isotipo en Cápsula Esférica */
+        /* Menú de Navegación con Isotipo Esférico */
         nav { 
             background-color: var(--bg-nav); 
             border-bottom: 1px solid var(--border-color); 
@@ -44,7 +46,7 @@
             -webkit-backdrop-filter: blur(12px);
             padding: 0 30px; 
         }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
         .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
         .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
@@ -55,66 +57,67 @@
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; box-shadow: 0 0 8px var(--primary); }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        /* Contenedor Maestro Dashboard */
-        .container { max-width: 1300px; margin: 40px auto; padding: 0 30px; }
+        /* Contenedor Global */
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 30px; }
 
-        /* Estructura Modular de Dos Columnas */
-        .dashboard-layout { display: table; width: 100%; border-collapse: separate; border-spacing: 30px 0; table-layout: fixed; }
-        .column-left { display: table-cell; vertical-align: top; }
-        .column-right { display: table-cell; vertical-align: top; width: 400px; }
+        /* Arquitectura de Pantalla Dividida (Split Screen 50/50) */
+        .split-layout { display: table; width: 100%; border-collapse: separate; border-spacing: 40px 0; table-layout: fixed; }
+        .split-pane { display: table-cell; vertical-align: top; width: 50%; }
 
-        /* Consola de Identidad Izquierda (Prioridad Dragón) */
-        .console-profile {
-            background: var(--card-gradient);
+        /* Bloque Izquierdo: Consola de Identidad de Marca */
+        .brand-console {
+            background: var(--card-gradient-left);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            height: 100%;
+        }
+        .dragon-core-wrapper { margin-bottom: 35px; display: inline-block; }
+        .dragon-core-image { width: 220px; height: auto; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 0 40px rgba(0, 240, 255, 0.2); background: rgba(6, 9, 19, 0.6); padding: 15px; }
+        
+        .brand-console h1 { font-size: 3.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 15px; color: #ffffff; }
+        .brand-console h2 { color: var(--primary); font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 35px; text-shadow: 0 0 15px rgba(0, 240, 255, 0.1); }
+        .brand-bio { color: var(--text-muted); font-size: 1.1rem; text-align: justify; font-weight: 400; line-height: 1.75; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 35px; }
+
+        /* Bloque Derecho: Paneles Operativos Extendidos */
+        .vertical-stack { display: block; }
+        .panel-extended-card {
+            background: var(--card-gradient-right);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            backdrop-filter: blur(6px);
-            margin-bottom: 20px;
-        }
-        .profile-header-layout { display: table; width: 100%; margin-bottom: 30px; }
-        .profile-avatar-cell { display: table-cell; vertical-align: middle; width: 180px; }
-        .profile-title-cell { display: table-cell; vertical-align: middle; padding-left: 30px; }
-
-        .console-profile h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 5px; }
-        .console-profile h2 { color: var(--primary); font-size: 1.45rem; font-weight: 600; letter-spacing: 0.3px; text-shadow: 0 0 15px rgba(0,240,255,0.1); }
-        
-        .dragon-emblem { width: 160px; height: auto; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); background: rgba(6, 9, 19, 0.5); padding: 12px; }
-        .profile-bio { color: var(--text-muted); font-size: 1.12rem; text-align: justify; font-weight: 400; line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; }
-
-        /* Paneles de Control Verticales (Derecha) */
-        .panel-vertical-stack { display: block; }
-        .panel-card {
-            background: var(--card-gradient);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            display: block;
+            padding: 35px;
+            margin-bottom: 30px;
+            display: table;
+            width: 100%;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.24);
         }
-        .panel-card:hover { 
-            transform: translateY(-4px) scale(1.01); 
+        .panel-extended-card:hover { 
+            transform: scale(1.02); 
             border-color: var(--primary); 
-            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15);
         }
-        .panel-title { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .panel-desc { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px; text-align: justify; line-height: 1.5; }
+        .panel-cell-content { display: table-cell; vertical-align: middle; }
+        .panel-cell-action { display: table-cell; vertical-align: middle; width: 220px; text-align: right; padding-left: 25px; }
+
+        .panel-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+        .panel-desc { color: var(--text-muted); font-size: 0.95rem; text-align: justify; line-height: 1.6; }
         
         /* Botones de Acción Estilo Terminal */
         .btn-action {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 240, 255, 0.02);
             color: var(--primary);
             border: 1px solid var(--border-color);
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 14px 24px;
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 700;
             letter-spacing: 0.3px;
             transition: all 0.3s ease;
@@ -124,15 +127,16 @@
             background-color: var(--primary); 
             color: var(--bg-dark); 
             border-color: var(--primary); 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
-        /* Footer Integrado */
-        .footer { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; font-weight: 500; width: 100%; }
+        /* Footer */
+        .footer { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
     </style>
 </head>
 <body>
 
+    <!-- Menú de Navegación Estructural Premium -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
@@ -149,44 +153,58 @@
     </nav>
 
     <div class="container">
-        <main class="dashboard-layout">
+        <!-- Layout Split Screen 50/50 -->
+        <main class="split-layout">
             
-            <section class="column-left">
-                <div class="console-profile">
-                    <div class="profile-header-layout">
-                        <div class="profile-avatar-cell">
-                            <img src="logo-cybersecurity.png" alt="Sello Dragón Central" class="dragon-emblem">
-                        </div>
-                        <div class="profile-title-cell">
-                            <h1>J. Maldonado</h1>
-                            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-                        </div>
+            <!-- PANEL IZQUIERDO: Consola de Identidad Inmersiva -->
+            <section class="split-pane">
+                <div class="brand-console">
+                    <div class="dragon-core-wrapper">
+                        <img src="logo-cybersecurity.png" alt="Sello Dragón Central" class="dragon-core-image">
                     </div>
-                    <p class="profile-bio">
+                    <h1>J. Maldonado</h1>
+                    <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
+                    <p class="brand-bio">
                         Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.
                     </p>
                 </div>
             </section>
 
-            <aside class="column-right">
-                <div class="panel-vertical-stack">
+            <!-- PANEL DERECHO: Tarjetas Operativas de Control Extendidas -->
+            <aside class="split-pane">
+                <div class="vertical-stack">
                     
-                    <div class="panel-card">
-                        <div class="panel-title">🛡️ Credenciales & Certificaciones</div>
-                        <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y resiliencia del entorno de TI (Acreditación eJPT).</p>
-                        <a href="certificaciones.html" class="btn-action">Auditar Credenciales →</a>
+                    <!-- Tarjeta Operativa 1 -->
+                    <div class="panel-extended-card">
+                        <div class="panel-cell-content">
+                            <div class="panel-title">🛡️ Credenciales & Certificaciones</div>
+                            <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y resiliencia del entorno de TI (Acreditación eJPT).</p>
+                        </div>
+                        <div class="panel-cell-action">
+                            <a href="certificaciones.html" class="btn-action">Auditar Credenciales →</a>
+                        </div>
                     </div>
 
-                    <div class="panel-card">
-                        <div class="panel-title">📊 Casos de Éxito Operativos</div>
-                        <p class="panel-desc">Base de conocimiento técnica de incidencias críticas resueltas en plataformas de Call Center bajo SLAs corporativos.</p>
-                        <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
+                    <!-- Tarjeta Operativa 2 -->
+                    <div class="panel-extended-card">
+                        <div class="panel-cell-content">
+                            <div class="panel-title">📊 Casos de Éxito Operativos</div>
+                            <p class="panel-desc">Base de conocimiento técnica de incidencias críticas resueltas en plataformas de Call Center bajo SLAs corporativos.</p>
+                        </div>
+                        <div class="panel-cell-action">
+                            <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
+                        </div>
                     </div>
 
-                    <div class="panel-card">
-                        <div class="panel-title">📡 Análisis Operativo</div>
-                        <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI y estrategias defensivas aplicadas al sector.</p>
-                        <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
+                    <!-- Tarjeta Operativa 3 -->
+                    <div class="panel-extended-card">
+                        <div class="panel-cell-content">
+                            <div class="panel-title">📡 Análisis Operativo & Ciberseguridad</div>
+                            <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI y estrategias defensivas aplicadas al sector de operaciones críticas.</p>
+                        </div>
+                        <div class="panel-cell-action">
+                            <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
+                        </div>
                     </div>
 
                 </div>
