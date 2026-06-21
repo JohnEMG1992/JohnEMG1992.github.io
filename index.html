@@ -5,65 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J. Maldonado | Gobernanza de TI & Control Operativo</title>
     <style>
-        :root { --primary: #0f2c59; --bg: #f8f9fa; --text: #212529; --border: #dee2e6; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: var(--text); background-color: var(--bg); max-width: 950px; margin: 0 auto; padding: 40px 20px; }
-        header { border-bottom: 3px solid var(--primary); padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { color: var(--primary); margin: 0; font-size: 2.5rem; letter-spacing: -0.5px; }
-        h2 { color: #495057; font-size: 1.3rem; font-weight: 400; margin-top: 5px; }
-        h3 { color: var(--primary); font-size: 1.4rem; border-left: 4px solid var(--primary); padding-left: 10px; margin-top: 40px; }
-        p { text-align: justify; color: #495057; }
-        .kpi-table { width: 100%; border-collapse: collapse; margin: 25px 0; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .kpi-table th, .kpi-table td { border: 1px solid var(--border); padding: 14px; text-align: left; }
-        .kpi-table th { background-color: #f1f3f5; color: var(--primary); font-weight: 600; }
-        .kpi-table tr:hover { background-color: #f8f9fa; }
-        .footer { margin-top: 60px; font-size: 0.85rem; color: #6c757d; border-top: 1px solid var(--border); padding-top: 20px; }
+        :root {
+            --bg-main: #0a0f1d;
+            --bg-card: #131a30;
+            --primary: #00e5ff;
+            --primary-dark: #00a8cc;
+            --text-main: #f4f6fa;
+            --text-muted: #8a99ad;
+            --border: #1e294b;
+            --accent-green: #00e676;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1a2342 100%);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        h1 { font-size: 2.8rem; color: #ffffff; font-weight: 700; margin-bottom: 10px; }
+        h2 { font-size: 1.4rem; color: var(--primary); font-weight: 400; margin-bottom: 15px; }
+        header p { color: var(--text-muted); font-size: 1.05rem; max-width: 800px; text-align: justify; }
+        
+        h3 { font-size: 1.6rem; color: #ffffff; margin: 40px 0 20px 0; padding-left: 12px; border-left: 4px solid var(--primary); }
+        
+        /* Grid Layout */
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        
+        /* Tables */
+        .table-container { overflow-x: auto; background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 16px; border-bottom: 1px solid var(--border); }
+        th { background-color: #1a2342; color: #ffffff; font-weight: 600; font-size: 0.95rem; }
+        td { color: var(--text-main); font-size: 0.95rem; }
+        tr:last-child td { border-bottom: none; }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 5px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+        .badge-success {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+        
+        .footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>J. Maldonado</h1>
-        <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-        <p><strong>Enfoque Estratégico:</strong> Mitigación de Riesgos, Gobernanza de Datos y Continuidad del Negocio en Operaciones de Alta Densidad.</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>J. Maldonado</h1>
+            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
+            <p>Especialista en la gestión de infraestructura tecnológica crítica y gobernanza de datos para operaciones de alta densidad. Enfoque estratégico orientado a la mitigación de riesgos de seguridad, control de SLAs y continuidad de negocio mediante decisiones basadas en evidencia analítica.</p>
+        </header>
 
-    <section>
-        <h3>🎯 Propuesta de Valor Logística</h3>
-        <p>Especialista en la dirección de infraestructura tecnológica y control de operaciones críticas en el sector de Call Centers. Liderazgo basado en la trazabilidad absoluta de incidentes, optimización de recursos de red y el cumplimiento estricto de acuerdos de nivel de servicio (SLAs). Capacidad analítica orientada a la toma de decisiones gerenciales mediante el diseño de cuadros de mando y explotación de datos operativos.</p>
-    </section>
+        <section>
+            <h3>🛡️ Certificaciones de Control e Infraestructura</h3>
+            <div class="grid">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h4>eJPT - Junior Penetration Tester</h4>
+                        <span class="badge badge-success">Verificada</span>
+                    </div>
+                    <p style="font-size: 0.95rem; margin-bottom: 15px;">Acreditación oficial expedida por eLearnSecurity / INE enfocada en la evaluación de vulnerabilidades, seguridad de redes, protocolos de enrutamiento y auditorías técnicas defensivas.</p>
+                    <div>
+                        <span class="badge">Mitigación de Riesgos</span>
+                        <span class="badge">Auditoría de Redes</span>
+                        <span class="badge">Ciberseguridad Defensiva</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h3>📊 Matriz de Skillset Dinámica</h3>
-        <table class="kpi-table">
-            <thead>
-                <tr>
-                    <th>Clúster Técnico</th>
-                    <th>Herramientas / Metodologías</th>
-                    <th>Impacto Operativo (KPI)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Gobernanza & Analítica</strong></td>
-                    <td>Excel Avanzado, Power BI, Cuadros de Mando KPIs</td>
-                    <td>Control de desviaciones, reportería ejecutiva y trazabilidad del rendimiento operativo.</td>
-                </tr>
-                <tr>
-                    <td><strong>Infraestructura & Redes</strong></td>
-                    <td>Administración de Switches, Segmentación VLAN, Scripting (PowerShell)</td>
-                    <td>Aislamiento de tráfico crítico, diagnóstico de saturación y minimización de tiempos de caída (*Downtime*).</td>
-                </tr>
-                <tr>
-                    <td><strong>Gestión de Servicios</strong></td>
-                    <td>Marcos de Trabajo de TI, Fundamentos de ITIL / Scrum</td>
-                    <td>Reducción del *First Response Time* (FRT) y optimización del ciclo de vida de los incidentes.</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <section>
+            <h3>📊 Matriz de Skillset Dinámica</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Clúster Técnico</th>
+                            <th>Herramientas / Metodologías</th>
+                            <th>Impacto Operativo (KPI)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gobernanza & Analítica</strong></td>
+                            <td>Excel Avanzado, Power BI, Dashboards KPIs</td>
+                            <td>Control de desviaciones en tiempo real, reportería ejecutiva de SLAs y trazabilidad analítica de incidentes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infraestructura & Redes</strong></td>
+                            <td>Switches Administrables, Segmentación VLAN, PowerShell</td>
+                            <td>Aislamiento preventivo de tráfico crítico, diagnóstico de saturación y optimización de ancho de banda.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ciberseguridad & Continuidad</strong></td>
+                            <td>Pentesting Básico (eJPT), Análisis de Vulnerabilidades</td>
+                            <td>Mitigación de brechas de seguridad informáticas (Data Leakage) y blindaje de infraestructura crítica en Call Center.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <div class="footer">
-        <p>© 2026 jmaldonado.site - Todos los derechos reservados. Espacio de control auditado para cumplimiento de confidencialidad corporativa.</p>
+        <div class="footer">
+            <p>© 2026 jmaldonado.site | Control Interno y Gobernanza de TI</p>
+        </div>
     </div>
 
 </body>
