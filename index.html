@@ -3,155 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J. Maldonado | Gobernanza de TI & Control Operativo</title>
+    <title>J. Maldonado | Centro de Control & Gobernanza TI</title>
     <style>
         :root {
-            --bg-main: #0a0f1d;
-            --bg-card: #131a30;
+            --bg-dark: #070b19;
+            --bg-card: #0f162e;
+            --bg-nav: #141d3b;
             --primary: #00e5ff;
-            --primary-dark: #00a8cc;
-            --text-main: #f4f6fa;
-            --text-muted: #8a99ad;
-            --border: #1e294b;
-            --accent-green: #00e676;
+            --primary-hover: #00b4cc;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e295d;
+            --success: #10b981;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; padding-bottom: 60px; }
+
+        /* Navegación Corporativa Premium */
+        nav { background-color: var(--bg-nav); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .nav-logo { font-size: 1.3rem; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+        /* Contenedor Principal */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        /* Banner Principal - Estilo Dashboard */
+        .hero-dashboard {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1e1b4b 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--bg-card) 0%, #1a2342 100%);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        .hero-dashboard::before {
+            content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, rgba(0,0,0,0) 70%);
         }
-        h1 { font-size: 2.8rem; color: #ffffff; font-weight: 700; margin-bottom: 10px; }
-        h2 { font-size: 1.4rem; color: var(--primary); font-weight: 400; margin-bottom: 15px; }
-        header p { color: var(--text-muted); font-size: 1.05rem; max-width: 800px; text-align: justify; }
-        
-        h3 { font-size: 1.6rem; color: #ffffff; margin: 40px 0 20px 0; padding-left: 12px; border-left: 4px solid var(--primary); }
-        
-        /* Grid Layout */
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        
-        /* Cards */
-        .card {
+        .hero-dashboard h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
+        .hero-dashboard h2 { color: var(--primary); font-size: 1.5rem; font-weight: 400; margin-bottom: 20px; }
+        .hero-dashboard p { color: var(--text-muted); font-size: 1.1rem; max-width: 850px; text-align: justify; }
+
+        /* Grid de Secciones / Módulos Operativos */
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 20px; }
+        .panel-card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s, border-color 0.2s;
         }
-        .card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .panel-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .panel-title { font-size: 1.3rem; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .panel-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; text-align: justify; }
         
-        /* Tables */
-        .table-container { overflow-x: auto; background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); margin: 20px 0; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 16px; border-bottom: 1px solid var(--border); }
-        th { background-color: #1a2342; color: #ffffff; font-weight: 600; font-size: 0.95rem; }
-        td { color: var(--text-main); font-size: 0.95rem; }
-        tr:last-child td { border-bottom: none; }
-        
-        /* Badges */
-        .badge {
-            display: inline-block;
-            background: rgba(0, 229, 255, 0.1);
+        /* Botones Ejecutivos */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
             color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-right: 5px;
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
         }
-        .badge-success {
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--accent-green);
-            border: 1px solid rgba(0, 230, 118, 0.2);
-        }
-        
-        .footer {
-            margin-top: 80px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .btn-action:hover { background-color: var(--primary); color: var(--bg-dark); border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.3); }
+
+        /* Footer */
+        .footer { text-align: center; margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
+    <!-- Menú de Navegación Estructural -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">J.MALDONADO<span>.SITE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="certificaciones.html">Certificaciones</a></li>
+                <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                <li><a href="analisis-sector.html">Análisis de Ciberseguridad</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
+        <!-- Banner Principal -->
+        <header class="hero-dashboard">
             <h1>J. Maldonado</h1>
             <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-            <p>Especialista en la gestión de infraestructura tecnológica crítica y gobernanza de datos para operaciones de alta densidad. Enfoque estratégico orientado a la mitigación de riesgos de seguridad, control de SLAs y continuidad de negocio mediante decisiones basadas en evidencia analítica.</p>
+            <p>Especialista en la gobernanza de infraestructura tecnológica crítica en entornos de alta densidad. Enfoque metodológico centrado en la mitigación de riesgos de seguridad, control estadístico de SLAs y el aseguramiento continuo de la disponibilidad del negocio a través de la toma de decisiones respaldada por analítica de datos.</p>
         </header>
 
-        <section>
-            <h3>🛡️ Certificaciones de Control e Infraestructura</h3>
-            <div class="grid">
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <h4>eJPT - Junior Penetration Tester</h4>
-                        <span class="badge badge-success">Verificada</span>
-                    </div>
-                    <p style="font-size: 0.95rem; margin-bottom: 15px;">Acreditación oficial expedida por eLearnSecurity / INE enfocada en la evaluación de vulnerabilidades, seguridad de redes, protocolos de enrutamiento y auditorías técnicas defensivas.</p>
-                    <div>
-                        <span class="badge">Mitigación de Riesgos</span>
-                        <span class="badge">Auditoría de Redes</span>
-                        <span class="badge">Ciberseguridad Defensiva</span>
-                    </div>
+        <!-- Paneles de Navegación del Dashboard -->
+        <main class="dashboard-grid">
+            
+            <!-- Módulo 1: Certificaciones -->
+            <div class="panel-card">
+                <div>
+                    <div class="panel-title">🛡️ Credenciales & Certificaciones</div>
+                    <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y seguridad del entorno de TI. Incluye mi reciente acreditación de Hacking Ético y Ciberseguridad Defensiva eJPT.</p>
                 </div>
+                <a href="certificaciones.html" class="btn-action">Auditar Certificaciones →</a>
             </div>
-        </section>
 
-        <section>
-            <h3>📊 Matriz de Skillset Dinámica</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Clúster Técnico</th>
-                            <th>Herramientas / Metodologías</th>
-                            <th>Impacto Operativo (KPI)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Gobernanza & Analítica</strong></td>
-                            <td>Excel Avanzado, Power BI, Dashboards KPIs</td>
-                            <td>Control de desviaciones en tiempo real, reportería ejecutiva de SLAs y trazabilidad analítica de incidentes.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Infraestructura & Redes</strong></td>
-                            <td>Switches Administrables, Segmentación VLAN, PowerShell</td>
-                            <td>Aislamiento preventivo de tráfico crítico, diagnóstico de saturación y optimización de ancho de banda.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ciberseguridad & Continuidad</strong></td>
-                            <td>Pentesting Básico (eJPT), Análisis de Vulnerabilidades</td>
-                            <td>Mitigación de brechas de seguridad informáticas (Data Leakage) y blindaje de infraestructura crítica en Call Center.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Módulo 2: Casos de Éxito -->
+            <div class="panel-card">
+                <div>
+                    <div class="panel-title">📊 Casos de Éxito Operativos</div>
+                    <p class="panel-desc">Base de conocimiento técnica y anonimizada de incidentes críticos resueltos en plataformas de Call Center. Estructura metodológica basada en diagnóstico de red, optimización y resolución de fallas bajo SLAs.</p>
+                </div>
+                <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
             </div>
-        </section>
 
-        <div class="footer">
-            <p>© 2026 jmaldonado.site | Control Interno y Gobernanza de TI</p>
-        </div>
+            <!-- Módulo 3: Análisis de Ciberseguridad -->
+            <div class="panel-card">
+                <div>
+                    <div class="panel-title">📡 Análisis Operativo & Ciberseguridad</div>
+                    <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI, resiliencia de infraestructura en la nube y estrategias defensivas contra Ransomware aplicadas al sector corporativo en el Perú.</p>
+                </div>
+                <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 jmaldonado.site | Gobierno de TI, Seguridad de Datos & Control de Operaciones Críticas</p>
+        </footer>
     </div>
 
 </body>
