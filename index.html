@@ -18,6 +18,7 @@
             --text-muted: #94a3b8;
             --border-color: rgba(51, 65, 85, 0.5);
             --border-hover: rgba(0, 240, 255, 0.6);
+            --bg-badge: rgba(30, 41, 59, 0.6);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -37,7 +38,7 @@
             background-attachment: fixed;
         }
 
-        /* Menú de Navegación Profesional Flotante */
+        /* Menú de Navegación Profesional Flotante con Prompt Linux */
         nav { 
             background-color: var(--bg-nav); 
             border-bottom: 1px solid var(--border-color); 
@@ -50,8 +51,13 @@
         }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
-        .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.25rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
-        .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+        .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.15rem; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; }
+        .nav-logo img { height: 40px; width: 40px; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0, 240, 255, 0.3); background: #0f172a; padding: 2px; }
+        
+        /* Estilo del Prompt Linux en barra superior */
+        .linux-prompt { font-family: monospace; color: var(--text-muted); font-size: 0.9rem; margin-left: 5px; }
+        .linux-prompt .user { color: var(--primary); font-weight: 600; }
+        .linux-prompt .host { color: #10b981; font-weight: 600; }
         
         .nav-links { display: flex; list-style: none; gap: 35px; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
@@ -60,7 +66,7 @@
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
         /* Contenedor Principal */
-        .container { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
 
         /* Grilla Asimétrica Premium */
         .split-layout { display: table; width: 100%; border-collapse: separate; border-spacing: 40px 0; table-layout: fixed; }
@@ -72,7 +78,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 60px;
+            padding: 55px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -80,7 +86,7 @@
         }
 
         /* Contenedor Animado del Dragón */
-        .dragon-container { position: relative; display: inline-block; margin-bottom: 40px; padding: 12px; }
+        .dragon-container { position: relative; display: inline-block; margin-bottom: 35px; padding: 12px; }
         .dragon-container::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 50%; border: 1px dashed rgba(0, 240, 255, 0.2);
@@ -94,7 +100,7 @@
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Interacción Cinemática Avanzada */
+        /* Interacción Cinemática */
         .dragon-container:hover::before {
             transform: rotate(90deg);
             border-color: var(--primary);
@@ -108,15 +114,15 @@
         }
         
         .brand-console h1 { font-size: 3.4rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; color: #ffffff; }
-        .brand-console h2 { color: var(--primary); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.3px; margin-bottom: 35px; }
-        .brand-bio { color: var(--text-muted); font-size: 1.05rem; text-align: justify; font-weight: 400; line-height: 1.8; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 35px; }
+        .brand-console h2 { color: var(--primary); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.3px; margin-bottom: 30px; }
+        .brand-bio { color: var(--text-muted); font-size: 1.05rem; text-align: justify; font-weight: 400; line-height: 1.8; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 30px; }
 
         /* Tarjetas de Módulo Derechas */
         .panel-extended-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 35px;
+            padding: 32px;
             margin-bottom: 24px;
             display: table;
             width: 100%;
@@ -131,26 +137,57 @@
             box-shadow: 0 20px 40px rgba(0, 240, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.1);
         }
         .panel-cell-content { display: table-cell; vertical-align: middle; }
-        .panel-cell-action { display: table-cell; vertical-align: middle; width: 170px; text-align: right; padding-left: 20px; }
+        .panel-cell-action { display: table-cell; vertical-align: middle; width: 160px; text-align: right; padding-left: 20px; }
 
         .panel-title { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
         .panel-desc { color: var(--text-muted); font-size: 0.92rem; text-align: justify; line-height: 1.5; }
         
-        /* Botones de Acción Estilo Software Corporativo */
         .btn-action {
             display: inline-flex; align-items: center; justify-content: center;
             background-color: #0f172a; color: #ffffff;
             border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 10px;
             text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: all 0.3s ease; width: 100%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .btn-action:hover { 
             background-color: var(--primary); color: #000000; border-color: var(--primary); 
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
         }
 
+        /* SECCIÓN INFERIOR: Stack Tecnológico Expandido (Solución al espacio en blanco) */
+        .tech-stack-section {
+            margin-top: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tech-stack-title {
+            font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 25px;
+            letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px;
+        }
+        .tech-stack-title::after {
+            content: ''; flex-grow: 1; height: 1px; background: rgba(51, 65, 85, 0.4); margin-left: 15px;
+        }
+        .tech-grid {
+            display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start;
+        }
+        .tech-badge {
+            background: var(--bg-badge); border: 1px solid var(--border-color);
+            color: var(--text-light); padding: 10px 18px; border-radius: 8px;
+            font-size: 0.88rem; font-weight: 600; letter-spacing: 0.3px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-badge:hover {
+            border-color: var(--primary); background: rgba(0, 240, 255, 0.03);
+            color: var(--primary); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
+        }
+
         /* Footer */
-        .footer { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
+        .footer { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -158,8 +195,10 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="nav-isotipo.png" alt="Isotipo J. Maldonado" style="height: 40px; width: 40px; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0, 240, 255, 0.3); background: #0f172a; padding: 2px;">
-                <span>J.MALDONADO<span>.SITE</span></span>
+                <img src="nav-isotipo.png" alt="Isotipo J. Maldonado">
+                <div class="linux-prompt">
+                    <span class="user">maldonado</span><span style="color:#ffffff;">@</span><span class="host">eternal-night-star</span><span style="color:#ffffff;">:~$</span>
+                </div>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Dashboard</a></li>
@@ -171,6 +210,7 @@
     </nav>
 
     <div class="container">
+        
         <main class="split-layout">
             
             <section class="split-pane-left">
@@ -214,6 +254,22 @@
                 
             </aside>
         </main>
+
+        <section class="tech-stack-section">
+            <div class="tech-stack-title">📡 STACK TECNOLÓGICO & HERRAMIENTAS DE GOBERNANZA TI</div>
+            <div class="tech-grid">
+                <span class="tech-badge">Cisco Core Switches & Routing</span>
+                <span class="tech-badge">VLAN Segmentation (Data/Voice)</span>
+                <span class="tech-badge">SLA & KPI Statistical Control</span>
+                <span class="tech-badge">Linux Server Administration</span>
+                <span class="tech-badge">Windows Server & Active Directory</span>
+                <span class="tech-badge">Wireshark Traffic Analysis</span>
+                <span class="tech-badge">PfSense Firewall Perimeter</span>
+                <span class="tech-badge">ITIL Framework Governance</span>
+                <span class="tech-badge">Incident Response Operational Flow</span>
+                <span class="tech-badge">eJPT Cybersecurity Standards</span>
+            </div>
+        </section>
         
         <footer class="footer">
             <p>© 2026 jmaldonado.site | Gobierno de TI & Control de Operaciones Críticas</p>
