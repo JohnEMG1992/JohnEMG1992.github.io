@@ -9,108 +9,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #060913;
-            --bg-card: rgba(15, 23, 42, 0.65);
-            --bg-nav: rgba(10, 15, 30, 0.8);
+            --bg-dark: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-nav: rgba(11, 15, 25, 0.85);
             --primary: #00f0ff;
-            --primary-glow: rgba(0, 240, 255, 0.25);
+            --primary-glow: rgba(0, 240, 255, 0.2);
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(30, 41, 59, 0.8);
-            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%);
+            --border-color: rgba(51, 65, 85, 0.5);
+            --border-hover: rgba(0, 240, 255, 0.6);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
         
         body { 
-            background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; padding-bottom: 40px;
-            background-image: radial-gradient(circle at 50% 40%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6; 
+            padding-bottom: 20px;
+            /* REJILLA TECNOLÓGICA PROFESIONAL + DEGRADADO DE PROFUNDIDAD */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(15, 23, 42, 0.8) 0%, var(--bg-dark) 70%);
+            background-size: 30px 30px, 30px 30px, 100% 100%, 100% 100%;
             background-attachment: fixed;
         }
 
+        /* Menú de Navegación Profesional Flotante */
         nav { 
-            background-color: var(--bg-nav); border-bottom: 1px solid var(--border-color); position: sticky; 
-            top: 0; z-index: 1000; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 0 30px; 
+            background-color: var(--bg-nav); 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0 40px; 
         }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        
+        .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.25rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
         .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+        
         .nav-links { display: flex; list-style: none; gap: 35px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); text-shadow: 0 0 8px var(--primary-glow); }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; box-shadow: 0 0 8px var(--primary); }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        .container { max-width: 1300px; margin: 40px auto; padding: 0 30px; }
+        /* Contenedor Principal */
+        .container { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
 
-        /* Consola Centralizada Superior */
-        .central-hero-console {
-            background: var(--card-gradient);
+        /* Grilla Asimétrica Premium */
+        .split-layout { display: table; width: 100%; border-collapse: separate; border-spacing: 40px 0; table-layout: fixed; }
+        .split-pane-left { display: table-cell; vertical-align: top; width: 52%; }
+        .split-pane-right { display: table-cell; vertical-align: top; width: 48%; }
+
+        /* Panel Izquierdo: Tarjeta de Identidad de Marca */
+        .brand-console {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 50px;
+            padding: 60px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            backdrop-filter: blur(6px);
         }
 
-        /* EFECTO HOVER AVANZADO: Levitación Magnética */
-        .dragon-badge-wrapper {
-            display: inline-block; margin-bottom: 25px; padding: 10px;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Contenedor Animado del Dragón */
+        .dragon-container { position: relative; display: inline-block; margin-bottom: 40px; padding: 12px; }
+        .dragon-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%; border: 1px dashed rgba(0, 240, 255, 0.2);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .dragon-centered-image { 
-            width: 180px; height: 180px; object-fit: cover;
-            border-radius: 50%; border: 2px solid var(--border-color); 
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15); 
-            background: rgba(6, 9, 19, 0.5); padding: 15px;
-            transition: all 0.4s ease;
+        .dragon-core-image { 
+            width: 190px; height: 190px; object-fit: cover;
+            border-radius: 50%; border: 1px solid var(--border-color); 
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+            background: #0f172a; padding: 20px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Activación por proximidad (Hover) */
-        .dragon-badge-wrapper:hover {
-            transform: translateY(-8px);
-        }
-        .dragon-badge-wrapper:hover .dragon-centered-image {
+        /* Interacción Cinemática Avanzada */
+        .dragon-container:hover::before {
+            transform: rotate(90deg);
             border-color: var(--primary);
-            box-shadow: 0 10px 35px var(--primary-glow);
+            border-style: solid;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
         }
-
-        .central-hero-console h1 { font-size: 3.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 10px; }
-        .central-hero-console h2 { color: var(--primary); font-size: 1.4rem; font-weight: 500; margin-bottom: 25px; }
-        .central-hero-console p { color: var(--text-muted); font-size: 1.1rem; max-width: 900px; margin: 0 auto; text-align: justify; text-justify: inter-word; line-height: 1.7; }
-
-        /* Grid Inferior de 3 Columnas */
-        .modules-grid-bottom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .minimal-panel-card {
-            background: var(--card-gradient);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .dragon-container:hover .dragon-core-image {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 0 40px var(--primary-glow);
         }
-        .minimal-panel-card:hover { 
-            transform: translateY(-5px); border-color: var(--primary); 
-            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.1);
-        }
-        .panel-title { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .panel-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 25px; text-align: justify; line-height: 1.5; }
         
+        .brand-console h1 { font-size: 3.4rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; color: #ffffff; }
+        .brand-console h2 { color: var(--primary); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.3px; margin-bottom: 35px; }
+        .brand-bio { color: var(--text-muted); font-size: 1.05rem; text-align: justify; font-weight: 400; line-height: 1.8; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 35px; }
+
+        /* Tarjetas de Módulo Derechas */
+        .panel-extended-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 24px;
+            display: table;
+            width: 100%;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .panel-extended-card:hover { 
+            transform: translateX(8px); 
+            border-color: var(--border-hover); 
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .panel-cell-content { display: table-cell; vertical-align: middle; }
+        .panel-cell-action { display: table-cell; vertical-align: middle; width: 170px; text-align: right; padding-left: 20px; }
+
+        .panel-title { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .panel-desc { color: var(--text-muted); font-size: 0.92rem; text-align: justify; line-height: 1.5; }
+        
+        /* Botones de Acción Estilo Software Corporativo */
         .btn-action {
             display: inline-flex; align-items: center; justify-content: center;
-            background-color: rgba(0, 240, 255, 0.02); color: var(--primary);
-            border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 8px;
-            text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: all 0.3s ease; margin-top: auto;
+            background-color: #0f172a; color: #ffffff;
+            border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 10px;
+            text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: all 0.3s ease; width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .btn-action:hover { 
-            background-color: var(--primary); color: var(--bg-dark); border-color: var(--primary); 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            background-color: var(--primary); color: #000000; border-color: var(--primary); 
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
         }
 
+        /* Footer */
         .footer { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
     </style>
 </head>
@@ -119,8 +158,8 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="nav-isotipo.png" alt="Isotipo" style="height: 42px; width: 42px; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0, 240, 255, 0.3); filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.5)); background: rgba(6, 9, 19, 0.5); padding: 2px;">
-                <span style="font-weight: 800; letter-spacing: 1px;">J.MALDONADO<span>.SITE</span></span>
+                <img src="nav-isotipo.png" alt="Isotipo J. Maldonado" style="height: 40px; width: 40px; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0, 240, 255, 0.3); background: #0f172a; padding: 2px;">
+                <span>J.MALDONADO<span>.SITE</span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Dashboard</a></li>
@@ -132,42 +171,53 @@
     </nav>
 
     <div class="container">
-        <header class="central-hero-console">
-            <div class="dragon-badge-wrapper">
-                <img src="logo-cybersecurity.png" alt="Sello Dragón Central" class="dragon-centered-image">
-            </div>
-            <h1>J. Maldonado</h1>
-            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-            <p>Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.</p>
-        </header>
-
-        <main class="modules-grid-bottom">
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">🛡️ Certificaciones</div>
-                    <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la resiliencia del entorno de TI (Acreditación eJPT).</p>
+        <main class="split-layout">
+            
+            <section class="split-pane-left">
+                <div class="brand-console">
+                    <div class="dragon-container">
+                        <img src="logo-cybersecurity.png" alt="Sello Dragón Central" class="dragon-core-image">
+                    </div>
+                    <h1>J. Maldonado</h1>
+                    <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
+                    <p class="brand-bio">
+                        Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.
+                    </p>
                 </div>
-                <a href="certificaciones.html" class="btn-action">Auditar Credenciales →</a>
-            </div>
+            </section>
 
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">📊 Casos de Éxito Operativos</div>
-                    <p class="panel-desc">Base de conocimiento técnica de incidencias críticas resueltas en plataformas de Call Center bajo SLAs corporativos.</p>
+            <aside class="split-pane-right">
+                
+                <div class="panel-extended-card">
+                    <div class="panel-cell-content">
+                        <div class="panel-title">🛡️ Certificaciones</div>
+                        <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la resiliencia y seguridad de TI.</p>
+                    </div>
+                    <div class="panel-cell-action"><a href="certificaciones.html" class="btn-action">Auditar →</a></div>
                 </div>
-                <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
-            </div>
 
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">📡 Análisis Operativo</div>
-                    <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI y estrategias defensivas aplicadas al sector.</p>
+                <div class="panel-extended-card">
+                    <div class="panel-cell-content">
+                        <div class="panel-title">📊 Casos de Éxito</div>
+                        <p class="panel-desc">Base de conocimiento técnica de incidencias críticas resueltas bajo estrictos acuerdos de nivel de servicio.</p>
+                    </div>
+                    <div class="panel-cell-action"><a href="casos-exito.html" class="btn-action">Ver Casos →</a></div>
                 </div>
-                <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
-            </div>
+
+                <div class="panel-extended-card">
+                    <div class="panel-cell-content">
+                        <div class="panel-title">📡 Análisis Operativo</div>
+                        <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre la gestión de infraestructura y seguridad de datos.</p>
+                    </div>
+                    <div class="panel-cell-action"><a href="analisis-sector.html" class="btn-action">Leer →</a></div>
+                </div>
+                
+            </aside>
         </main>
-
-        <footer class="footer"><p>© 2026 jmaldonado.site | Gobierno de TI & Control Operativo</p></footer>
+        
+        <footer class="footer">
+            <p>© 2026 jmaldonado.site | Gobierno de TI & Control de Operaciones Críticas</p>
+        </footer>
     </div>
 </body>
 </html>
