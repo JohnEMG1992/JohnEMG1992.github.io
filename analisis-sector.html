@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Ciberseguridad | J. Maldonado</title>
+    <!-- Google Fonts para consistencia visual corporativa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #060913;
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --bg-nav: rgba(10, 15, 30, 0.8);
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.25);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(30, 41, 59, 0.8);
+            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.7; 
+            padding-bottom: 80px;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 10% 70%, rgba(30, 41, 59, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Navegación Homologada */
+        nav { 
+            background-color: var(--bg-nav); 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 30px; 
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); text-shadow: 0 0 8px var(--primary-glow); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        /* Contenedor Principal */
+        .container { max-width: 1000px; margin: 50px auto; padding: 0 30px; }
+        
+        .page-header { margin-bottom: 50px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .page-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.8px; }
+        .page-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* Artículo de Opinión */
+        .article-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 45px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+        .article-meta { display: flex; gap: 20px; color: var(--primary); font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .article-title { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; letter-spacing: -0.5px; line-height: 1.3; }
+        
+        .article-content p { color: #cbd5e1; font-size: 1.05rem; margin-bottom: 20px; text-align: justify; }
+        .article-content h3 { font-size: 1.3rem; color: #ffffff; margin: 30px 0 15px 0; font-weight: 700; }
+        .article-content ul { margin-left: 20px; margin-bottom: 20px; color: #cbd5e1; }
+        .article-content li { margin-bottom: 10px; font-size: 1.02rem; }
+        
+        .article-highlight { 
+            background-color: rgba(0, 240, 255, 0.02); 
+            border-left: 4px solid var(--primary); 
+            padding: 20px; 
+            border-radius: 0 10px 10px 0; 
+            margin: 30px 0; 
+            font-style: italic;
+            color: #e2e8f0;
+        }
+
+        /* Footer */
+        .footer { text-align: center; margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.88rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación Homologado -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">J.MALDONADO<span>.SITE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="certificaciones.html">Certificaciones</a></li>
+                <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                <li><a href="analisis-sector.html" class="active">Análisis de Ciberseguridad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">Análisis Operativo & Sector TI</h1>
+            <p class="page-subtitle">Evaluaciones gerenciales sobre continuidad de negocio, gestión de riesgos e infraestructura tecnológica en operaciones de alta densidad en el Perú.</p>
+        </header>
+
+        <main>
+            <!-- Artículo 1: Resiliencia Cloud y Ransomware -->
+            <article class="article-card">
+                <div class="article-meta">
+                    <span>📅 Junio 2026</span>
+                    <span>•</span>
+                    <span>🔒 Ciberseguridad Defensiva</span>
+                </div>
+                <h2 class="article-title">Resiliencia de Infraestructura Cloud: Estrategias de Mitigación frente al Ransomware en Call Centers</h2>
+                
+                <div class="article-content">
+                    <p>En el escenario corporativo actual del Perú, las operaciones de BPO y Call Centers manejan volúmenes masivos de interacciones concurrentes de datos de telecomunicaciones y banca. Esta densidad operativa convierte a la infraestructura en un blanco crítico para ataques de Ransomware, donde el impacto de un secuestro de datos no solo genera pérdidas financieras por tiempo de inactividad (Downtime), sino que quiebra de manera directa los Acuerdos de Nivel de Servicio (SLAs) pactados con los clientes.</p>
+                    
+                    <p>La migración hacia entornos híbridos y nube (Cloud) ha optimizado la entrega de servicios, pero ha ampliado la superficie de ataque. Un gobierno de TI robusto exige transicionar de la respuesta reactiva a un modelo de control interno preventivo basado en datos.</p>
+                    
+                    <div class="article-highlight">
+                        "La continuidad del negocio en operaciones críticas no se asegura pagando un rescate; se garantiza estructurando una arquitectura de red con políticas de confianza cero (Zero Trust) y segmentación estricta."
+                    </div>
+
+                    <h3>Ejes Fundamentales para el Blindaje Operativo:</h3>
+                    <ul>
+                        <li><strong>Segmentación de Red y Control de VLANs:</strong> Aislar estrictamente los segmentos de datos de los asesores (VLANs operativas) del Core de servidores e infraestructura crítica de la nube, limitando el movimiento lateral de cualquier malware infectado en una estación de trabajo de soporte.</li>
+                        <li><strong>Inmutabilidad de Backups:</strong> Implementar políticas de respaldo en la nube con retención inmutable. Ante un cifrado malicioso, la capacidad de restauración inmediata determina el cumplimiento del First Response Time (FRT) del equipo de ingeniería.</li>
+                        <li><strong>Auditorías Técnicas de Vulnerabilidad:</strong> Ejecutar de forma periódica análisis defensivos de Pentesting (como los lineamientos de la acreditación eJPT) para parchar configuraciones defectuosas en activos expuestos antes de que sean explotadas.</li>
+                    </ul>
+
+                    <p>La ciberseguridad ya no es una función aislada del departamento de sistemas; es el pilar central sobre el cual descansa la resiliencia de la marca y la estabilidad operativa de la organización. Un Supervisor moderno debe liderar con métricas de control claras, garantizando que el riesgo informático se mantenga mitigado al mínimo margen tolerable.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 jmaldonado.site | Gobierno de TI, Seguridad de Datos & Control de Operaciones Críticas</p>
+        </footer>
+    </div>
+
+</body>
+</html>
