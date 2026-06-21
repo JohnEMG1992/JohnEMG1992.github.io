@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificaciones | J. Maldonado</title>
+    <style>
+        :root {
+            --bg-dark: #070b19;
+            --bg-card: #0f162e;
+            --bg-nav: #141d3b;
+            --primary: #00e5ff;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e295d;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; padding-bottom: 60px; }
+
+        /* Navegación */
+        nav { background-color: var(--bg-nav); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .nav-logo { font-size: 1.3rem; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+        /* Contenido */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .page-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 15px; }
+        
+        .cert-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 30px; }
+        .cert-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cert-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .cert-name { font-size: 1.4rem; color: #ffffff; font-weight: 600; }
+        .cert-issuer { color: var(--primary); font-size: 1rem; margin-top: 2px; }
+        
+        /* Estado */
+        .badge { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+        .badge-active { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .badge-pipeline { background: rgba(245, 158, 11, 0.1); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); }
+
+        .cert-impact { background-color: rgba(20, 29, 59, 0.5); border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 8px 8px 0; margin: 20px 0; }
+        .cert-impact strong { color: #ffffff; }
+        
+        .tags-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .tag { background: rgba(255,255,255,0.05); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; border: 1px solid var(--border-color); }
+
+        /* Botón de Verificación Externa */
+        .btn-verify {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--border-color);
+            color: #ffffff;
+            border: 1px solid var(--primary);
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-verify:hover {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">J.MALDONADO<span>.SITE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="certificaciones.html" class="active">Certificaciones</a></li>
+                <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                <li><a href="analisis-sector.html">Análisis de Ciberseguridad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Credenciales & Certificaciones Internacionales</h1>
+        <p style="color: var(--text-muted);">Auditoría interna de competencias técnicas validadas para el aseguramiento de la continuidad operativa y el gobierno de tecnologías de información.</p>
+
+        <main class="cert-grid">
+            
+            <article class="cert-card">
+                <div class="cert-header">
+                    <div>
+                        <h2 class="cert-name">eJPT — Junior Penetration Tester</h2>
+                        <div class="cert-issuer">eLearnSecurity / INE</div>
+                    </div>
+                    <span class="badge badge-active">Credencial Activa</span>
+                </div>
+                <p style="color: var(--text-muted); text-align: justify;">Acreditación técnica especializada en hacking ético, evaluación de vulnerabilidades, seguridad en redes de datos, reconocimiento de entornos y análisis de protocolos de enrutamiento.</p>
+                
+                <div class="cert-impact">
+                    <p><strong>Impacto Operativo en Control Interno:</strong> Capacitación directa para auditar la infraestructura local de Call Centers (Switches, Servidores, VLANs de asesores). Permite identificar brechas de configuración de manera preventiva, mitigando riesgos de fugas de información corporativa y ataques dirigidos que busquen generar caídas del servicio (*Downtime*).</p>
+                </div>
+                
+                <div class="tags-container">
+                    <span class="tag">Seguridad Defensiva</span>
+                    <span class="tag">Auditoría de Redes</span>
+                    <span class="tag">Análisis de Vulnerabilidades</span>
+                </div>
+
+                <a href="https://certs.ine.com/a4b8fec2-6061-4d5e-b4a2-fe875ae12a95#acc.ty4ui6wK" target="_blank" class="btn-verify">🛡️ Validar Credencial en Plataforma Oficial →</a>
+            </article>
+
+            <article class="cert-card" style="opacity: 0.65;">
+                <div class="cert-header">
+                    <div>
+                        <h2 class="cert-name">Fundamentos de ITIL® 4</h2>
+                        <div class="cert-issuer">AXELOS / PeopleCert</div>
+                    </div>
+                    <span class="badge badge-pipeline">En Pipeline de Estudio</span>
+                </div>
+                <p style="color: var(--text-muted);">Alineación estratégica de los servicios de TI con las necesidades del negocio basados en las mejores prácticas globales.</p>
+                <div class="cert-impact">
+                    <p><strong>Impacto Esperado:</strong> Optimización de la mesa de soporte mediante el control estricto del ciclo de vida del ticket, asegurando la reducción del *First Response Time* (FRT) y el cumplimiento estricto de los SLAs pactados.</p>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+</body>
+</html>
