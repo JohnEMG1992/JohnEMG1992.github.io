@@ -48,7 +48,7 @@
         }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
-        .nav-logo { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
         .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
         
         .nav-links { display: flex; list-style: none; gap: 35px; }
@@ -60,7 +60,7 @@
         /* Contenedor Principal */
         .container { max-width: 1200px; margin: 50px auto; padding: 0 30px; }
 
-        /* Banner Principal - Estilo Consola de Monitoreo */
+        /* Banner Central - Estilo Consola con Emblema Flanqueado */
         .hero-dashboard {
             background: var(--card-gradient);
             border: 1px solid var(--border-color);
@@ -70,10 +70,17 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             position: relative;
             backdrop-filter: blur(6px);
+            display: table;
+            width: 100%;
         }
+        .hero-layout { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-graphic { flex-shrink: 0; text-align: right; }
+        .hero-graphic img { width: 160px; height: auto; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: 0 0 25px rgba(0, 240, 255, 0.15); background: rgba(6, 9, 19, 0.4); padding: 10px; }
+
         .hero-dashboard h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 12px; line-height: 1.1; letter-spacing: -1px; }
         .hero-dashboard h2 { color: var(--primary); font-size: 1.5rem; font-weight: 500; margin-bottom: 25px; letter-spacing: 0.5px; }
-        .hero-dashboard p { color: var(--text-muted); font-size: 1.15rem; max-width: 900px; text-align: justify; font-weight: 400; }
+        .hero-dashboard p { color: var(--text-muted); font-size: 1.15rem; text-align: justify; font-weight: 400; }
 
         /* Grid de Secciones Operativas */
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
@@ -130,13 +137,9 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <!-- Isotipo Vectorial Premium: Dragón de Seguridad Estilizado -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    <path d="M12 22V12"/>
-                    <path d="M12 7c1.5-1.5 2.5-3 4-3s2 1 2 2.5-1.5 2.5-3 4M12 7c-1.5-1.5-2.5-3-4-3s-2 1-2 2.5 1.5 2.5 3 4"/>
-                </svg>
-                <span>J.MALDONADO</span><span>.SITE</span>
+                <!-- Renderizado del Isotipo en la Barra de Navegación -->
+                <img src="logo-cybersecurity.png" alt="Sello J. Maldonado" style="height: 42px; width: auto; border-radius: 6px; filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));">
+                <span style="font-weight: 800; letter-spacing: 1px;">J.MALDONADO<span>.SITE</span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Dashboard</a></li>
@@ -148,11 +151,20 @@
     </nav>
 
     <div class="container">
-        <!-- Banner Central Estilo Dashboard -->
+        <!-- Banner Central Estilo Dashboard (Layout Flex) -->
         <header class="hero-dashboard">
-            <h1>J. Maldonado</h1>
-            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-            <p>Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.</p>
+            <div class="hero-layout">
+                <!-- Columna Informativa -->
+                <div class="hero-text">
+                    <h1>J. Maldonado</h1>
+                    <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
+                    <p>Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.</p>
+                </div>
+                <!-- Columna del Emblema Centralizado Grande -->
+                <div class="hero-graphic">
+                    <img src="logo-cybersecurity.png" alt="Gobernanza TI Sello Central">
+                </div>
+            </div>
         </header>
 
         <!-- Grilla de Módulos del Centro de Control -->
