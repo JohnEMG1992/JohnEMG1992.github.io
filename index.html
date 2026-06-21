@@ -4,94 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J. Maldonado | Centro de Control & Gobernanza TI</title>
+    <!-- Google Fonts para máxima scannability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #070b19;
-            --bg-card: #0f162e;
-            --bg-nav: #141d3b;
-            --primary: #00e5ff;
-            --primary-hover: #00b4cc;
-            --text-light: #ffffff;
+            --bg-dark: #060913;
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --bg-nav: rgba(10, 15, 30, 0.8);
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.25);
+            --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: #1e295d;
+            --border-color: rgba(30, 41, 59, 0.8);
+            --border-glow: rgba(0, 240, 255, 0.15);
             --success: #10b981;
+            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; padding-bottom: 60px; }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6; 
+            padding-bottom: 80px;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 10% 70%, rgba(30, 41, 59, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
 
-        /* Navegación Corporativa Premium */
-        nav { background-color: var(--bg-nav); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0 20px; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .nav-logo { font-size: 1.3rem; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; }
-        .nav-logo span { color: var(--primary); }
-        .nav-links { display: flex; list-style: none; gap: 30px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        /* Navegación Inteligente */
+        nav { 
+            background-color: var(--bg-nav); 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 30px; 
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); text-shadow: 0 0 8px var(--primary-glow); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; boxShadow: 0 0 8px var(--primary); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        /* Contenedor Principal */
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        /* Contenedor */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 30px; }
 
-        /* Banner Principal - Estilo Dashboard */
+        /* Banner Principal - Estilo Consola Avanzada */
         .hero-dashboard {
-            background: linear-gradient(135deg, var(--bg-card) 0%, #1e1b4b 100%);
+            background: var(--card-gradient);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            backdrop-filter: blur(6px);
+        }
+        .hero-dashboard::after {
+            content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border-radius: 20px; padding: 1px;
+            background: linear-gradient(135deg, var(--border-color) 0%, transparent 50%, var(--border-color) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .hero-dashboard h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 12px; line-height: 1.1; letter-spacing: -1px; }
+        .hero-dashboard h2 { color: var(--primary); font-size: 1.5rem; font-weight: 500; margin-bottom: 25px; letter-spacing: 0.5px; }
+        .hero-dashboard p { color: var(--text-muted); font-size: 1.15rem; max-width: 900px; text-align: justify; font-weight: 400; }
+
+        /* Grid de Módulos del Dashboard */
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .panel-card {
+            background: var(--card-gradient);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 50px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-dashboard::before {
-            content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, rgba(0,0,0,0) 70%);
-        }
-        .hero-dashboard h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
-        .hero-dashboard h2 { color: var(--primary); font-size: 1.5rem; font-weight: 400; margin-bottom: 20px; }
-        .hero-dashboard p { color: var(--text-muted); font-size: 1.1rem; max-width: 850px; text-align: justify; }
-
-        /* Grid de Secciones / Módulos Operativos */
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 20px; }
-        .panel-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 30px;
+            padding: 35px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s, border-color 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
         }
-        .panel-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .panel-title { font-size: 1.3rem; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .panel-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; text-align: justify; }
+        .panel-card:hover { 
+            transform: translateY(-6px); 
+            border-color: var(--primary); 
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.1);
+        }
+        .panel-title { font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; letter-spacing: -0.3px; }
+        .panel-desc { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 30px; text-align: justify; line-height: 1.6; }
         
-        /* Botones Ejecutivos */
+        /* Botones de Acción de Alta Fidelidad */
         .btn-action {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            background-color: rgba(0, 240, 255, 0.03);
             color: var(--primary);
             border: 1px solid var(--border-color);
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 14px 24px;
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
         }
-        .btn-action:hover { background-color: var(--primary); color: var(--bg-dark); border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.3); }
+        .btn-action:hover { 
+            background-color: var(--primary); 
+            color: var(--bg-dark); 
+            border-color: var(--primary); 
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transform: scale(1.02);
+        }
 
         /* Footer */
-        .footer { text-align: center; margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
+        .footer { text-align: center; margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.88rem; font-weight: 500; }
     </style>
 </head>
 <body>
 
-    <!-- Menú de Navegación Estructural -->
+    <!-- Navegación Estructural Premium -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">J.MALDONADO<span>.SITE</span></div>
@@ -105,39 +150,39 @@
     </nav>
 
     <div class="container">
-        <!-- Banner Principal -->
+        <!-- Banner Central Estilo Dashboard -->
         <header class="hero-dashboard">
             <h1>J. Maldonado</h1>
-            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
-            <p>Especialista en la gobernanza de infraestructura tecnológica crítica en entornos de alta densidad. Enfoque metodológico centrado en la mitigación de riesgos de seguridad, control estadístico de SLAs y el aseguramiento continuo de la disponibilidad del negocio a través de la toma de decisiones respaldada por analítica de datos.</p>
+            <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo  </h2>
+            <p>Especialista en el gobierno y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.</p>
         </header>
 
-        <!-- Paneles de Navegación del Dashboard -->
+        <!-- Grilla de Módulos del Centro de Control -->
         <main class="dashboard-grid">
             
-            <!-- Módulo 1: Certificaciones -->
+            <!-- Panel 1: Certificaciones -->
             <div class="panel-card">
                 <div>
                     <div class="panel-title">🛡️ Credenciales & Certificaciones</div>
-                    <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y seguridad del entorno de TI. Incluye mi reciente acreditación de Hacking Ético y Ciberseguridad Defensiva eJPT.</p>
+                    <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y resiliencia del entorno de TI. Incluye mi reciente acreditación de Hacking Ético y Ciberseguridad Defensiva eJPT con verificación criptográfica en tiempo real.</p>
                 </div>
                 <a href="certificaciones.html" class="btn-action">Auditar Certificaciones →</a>
             </div>
 
-            <!-- Módulo 2: Casos de Éxito -->
+            <!-- Panel 2: Casos de Éxito -->
             <div class="panel-card">
                 <div>
                     <div class="panel-title">📊 Casos de Éxito Operativos</div>
-                    <p class="panel-desc">Base de conocimiento técnica y anonimizada de incidentes críticos resueltos en plataformas de Call Center. Estructura metodológica basada en diagnóstico de red, optimización y resolución de fallas bajo SLAs.</p>
+                    <p class="panel-desc">Base de conocimiento técnica y anonimizada de incidencias críticas resueltas en plataformas de Call Center. Estructura metodológica basada en diagnóstico de red, optimización y resolución de fallas bajo SLAs corporativos.</p>
                 </div>
                 <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
             </div>
 
-            <!-- Módulo 3: Análisis de Ciberseguridad -->
+            <!-- Panel 3: Análisis de Ciberseguridad -->
             <div class="panel-card">
                 <div>
                     <div class="panel-title">📡 Análisis Operativo & Ciberseguridad</div>
-                    <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI, resiliencia de infraestructura en la nube y estrategias defensivas contra Ransomware aplicadas al sector corporativo en el Perú.</p>
+                    <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI, resiliencia de infraestructura cloud y estrategias defensivas contra Ransomware aplicadas al sector de operaciones críticas corporativas en el Perú.</p>
                 </div>
                 <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
             </div>
