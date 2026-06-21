@@ -10,14 +10,14 @@
     <style>
         :root {
             --bg-dark: #060913;
-            --bg-card: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(15, 23, 42, 0.6);
             --bg-nav: rgba(10, 15, 30, 0.8);
             --primary: #00f0ff;
-            --primary-glow: rgba(0, 240, 255, 0.25);
+            --primary-glow: rgba(0, 240, 255, 0.3);
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(30, 41, 59, 0.8);
-            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%);
+            --card-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(30, 41, 59, 0.4) 100%);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -28,12 +28,11 @@
             line-height: 1.6; 
             padding-bottom: 40px;
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 10% 90%, rgba(30, 41, 59, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
             background-attachment: fixed;
         }
 
-        /* Menú de Navegación Estructural Premium */
+        /* Menú con Isotipo Esférico */
         nav { 
             background-color: var(--bg-nav); 
             border-bottom: 1px solid var(--border-color); 
@@ -44,7 +43,7 @@
             -webkit-backdrop-filter: blur(12px);
             padding: 0 30px; 
         }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
         .nav-logo { display: flex; align-items: center; gap: 14px; font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
         .nav-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
@@ -55,72 +54,88 @@
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.3s ease; box-shadow: 0 0 8px var(--primary); }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        /* Contenedor Unificado */
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 30px; }
+        /* Contenedor Maestro */
+        .container { max-width: 1400px; margin: 50px auto; padding: 0 30px; }
 
-        /* CONSOLA SUPERIOR (Hero 100% Ancho) */
-        .hero-top-console {
+        /* ARQUITECTURA HUD RADIAL: 3 Columnas Simétricas en Tabla */
+        .hud-matrix { display: table; width: 100%; border-collapse: separate; border-spacing: 35px 0; table-layout: fixed; }
+        .hud-column-side { display: table-cell; vertical-align: middle; width: 38%; }
+        .hud-column-core { display: table-cell; vertical-align: middle; width: 24%; text-align: center; }
+
+        /* Bloque Izquierdo: Datos Técnicos */
+        .hud-profile-card {
             background: var(--card-gradient);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 50px;
-            margin-bottom: 40px;
+            padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             backdrop-filter: blur(6px);
-            display: table;
-            width: 100%;
         }
-        .hero-layout { display: table-row; }
-        .hero-avatar-cell { display: table-cell; vertical-align: middle; width: 190px; }
-        .hero-text-cell { display: table-cell; vertical-align: middle; padding-left: 40px; }
+        .hud-profile-card h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; letter-spacing: -1px; }
+        .hud-profile-card h2 { color: var(--primary); font-size: 1.25rem; font-weight: 600; line-height: 1.4; margin-bottom: 25px; }
+        .hud-profile-card p { color: var(--text-muted); font-size: 1rem; text-align: justify; line-height: 1.6; }
 
-        .hero-top-console h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 8px; }
-        .hero-top-console h2 { color: var(--primary); font-size: 1.4rem; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 20px; }
-        .hero-top-console p { color: var(--text-muted); font-size: 1.08rem; text-align: justify; font-weight: 400; line-height: 1.7; }
-        .dragon-badge { width: 160px; height: auto; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 0 25px rgba(0, 240, 255, 0.15); background: rgba(6, 9, 19, 0.4); padding: 10px; }
+        /* Bloque Central: Núcleo Radial Dragón */
+        .radial-core-wrapper { position: relative; display: inline-block; padding: 20px; }
+        .radial-core-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px; height: 240px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 240, 255, 0.2);
+            animation: spin 30px linear infinite;
+        }
+        .dragon-radial-image { 
+            width: 190px; height: auto; 
+            border-radius: 50%; 
+            border: 2px solid var(--primary); 
+            box-shadow: 0 0 35px var(--primary-glow); 
+            background: rgba(6, 9, 19, 0.8); 
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+        .dragon-radial-image:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(0, 240, 255, 0.5); }
 
-        /* GRID INFERIOR MINIMALISTA DE TRES COLUMNAS */
-        .modules-horizontal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .minimal-panel-card {
+        /* Bloque Derecho: Menú Táctico Vertical */
+        .hud-panel-card {
             background: var(--card-gradient);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
-        .minimal-panel-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--primary); 
-            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.1);
+        .hud-panel-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+            transform: translateX(5px);
         }
-        .panel-title { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.3px; }
-        .panel-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 25px; text-align: justify; line-height: 1.5; }
-        
-        /* Botones de Acción Tácticos */
+        .hud-title { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .hud-desc { color: var(--text-muted); font-size: 0.85rem; text-align: justify; margin-bottom: 15px; line-height: 1.4; }
+
+        /* Botones de Acción Avanzados */
         .btn-action {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 240, 255, 0.02);
+            background: rgba(0, 240, 255, 0.02);
             color: var(--primary);
             border: 1px solid var(--border-color);
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            margin-top: auto;
+            width: 100%;
         }
-        .btn-action:hover { 
-            background-color: var(--primary); 
-            color: var(--bg-dark); 
-            border-color: var(--primary); 
+        .btn-action:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-color: var(--primary);
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
 
@@ -146,44 +161,43 @@
     </nav>
 
     <div class="container">
-        <header class="hero-top-console">
-            <div class="hero-layout">
-                <div class="hero-avatar-cell">
-                    <img src="logo-cybersecurity.png" alt="Sello Dragón Central" class="dragon-badge">
-                </div>
-                <div class="hero-text-cell">
+        <main class="hud-matrix">
+            
+            <section class="hud-column-side">
+                <div class="hud-profile-card">
                     <h1>J. Maldonado</h1>
                     <h2>Supervisor de Soporte, Sistemas y Control Interno Operativo</h2>
                     <p>Especialista en la gobernanza y auditoría de infraestructura tecnológica crítica en entornos de alta densidad en el Perú. Liderazgo táctico enfocado en la mitigación activa de riesgos informáticos, control estadístico del cumplimiento de SLAs y aseguramiento de la continuidad de negocio mediante decisiones respaldadas por análisis de datos.</p>
                 </div>
-            </div>
-        </header>
+            </section>
 
-        <main class="modules-horizontal-grid">
-            
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">🛡️ Credenciales & Certificaciones</div>
-                    <p class="panel-desc">Validación de competencias técnicas internacionales orientadas a la gestión y resiliencia del entorno de TI (Acreditación eJPT).</p>
+            <section class="hud-column-core">
+                <div class="radial-core-wrapper">
+                    <img src="logo-cybersecurity.png" alt="Sello Dragón Central Radial" class="dragon-radial-image">
                 </div>
-                <a href="certificaciones.html" class="btn-action">Auditar Credenciales →</a>
-            </div>
+            </section>
 
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">📊 Casos de Éxito Operativos</div>
-                    <p class="panel-desc">Base de conocimiento técnica de incidencias críticas resueltas en plataformas de Call Center bajo SLAs corporativos.</p>
+            <aside class="hud-column-side">
+                
+                <div class="hud-panel-card">
+                    <div class="hud-title">🛡️ Credenciales & Certificaciones</div>
+                    <p class="hud-desc">Validación de competencias técnicas internacionales orientadas a la resiliencia del entorno de TI (Acreditación eJPT).</p>
+                    <a href="certificaciones.html" class="btn-action">Auditar Credenciales →</a>
                 </div>
-                <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
-            </div>
 
-            <div class="minimal-panel-card">
-                <div>
-                    <div class="panel-title">📡 Análisis Operativo</div>
-                    <p class="panel-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI y estrategias defensivas contra Ransomware aplicadas al sector.</p>
+                <div class="hud-panel-card">
+                    <div class="hud-title">📊 Casos de Éxito Operativos</div>
+                    <p class="hud-desc">Base de conocimiento técnica de incidencias críticas resueltas en plataformas de Call Center bajo SLAs corporativos.</p>
+                    <a href="casos-exito.html" class="btn-action">Ver Casos Operativos →</a>
                 </div>
-                <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
-            </div>
+
+                <div class="hud-panel-card">
+                    <div class="hud-title">📡 Análisis Operativo</div>
+                    <p class="hud-desc">Evaluación gerencial y opiniones técnicas sobre normativas de TI y estrategias defensivas aplicadas al sector.</p>
+                    <a href="analisis-sector.html" class="btn-action">Leer Análisis Técnico →</a>
+                </div>
+
+            </aside>
 
         </main>
 
